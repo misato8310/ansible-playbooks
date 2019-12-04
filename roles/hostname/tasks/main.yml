@@ -1,4 +1,4 @@
 ---
-- name: "Change of {{ inventory_hostname }}"
+- name: "Change of {{ best_hostname }}"
   hostname: 
     name: "{{ best_hostname }}"
