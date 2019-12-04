@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: False
+  remote_user: root
+  roles:
+    - hostname
+    - sshd
+    - firewalld
+    - yumupdate

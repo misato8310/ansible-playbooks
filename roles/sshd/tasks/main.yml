@@ -1,0 +1,26 @@
+---
+- name: Disable of PasswordAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    insertafter: "^#PasswordAuthentication"
+    line: "PasswordAuthentication no"
+
+- name: Disable of ChallengeResponseAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^ChallengeResponseAuthentication"
+    insertafter: "^#ChallengeResponseAuthentication"
+    line: "ChallengeResponseAuthentication no"
+
+- name: "Change of {{ sshd_port }}/tcp port"
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^Port"
+    insertafter: "^#Port"
+    line: "Port {{ sshd_port }}"
+
+- name: Restart sshd
+  service:
+    name: sshd
+    state: restarted

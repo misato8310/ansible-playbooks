@@ -1,0 +1,20 @@
+- name: "Open of {{ sshd_port }}/tcp port"
+  firewalld:
+    port: "{{ sshd_port }}/tcp"
+    permanent: true
+    state: enabled
+    immediate: true
+
+- name: "Close of ssh service"
+  firewalld:
+    service: ssh
+    permanent: true
+    state: disabled
+    immediate: true
+
+- name: "Close of 22/tcp port"
+  firewalld:
+    port: 22/tcp
+    permanent: true
+    state: disabled
+    immediate: true
